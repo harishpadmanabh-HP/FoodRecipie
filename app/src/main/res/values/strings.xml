@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FoodRecipie</string>
+    <string name="APIKEY">b3b4e99393e14c5184635b0b1cf9ae2c</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recipes_fragment">Recipes</string>
+    <string name="favourite_fragment">Favourite</string>
+    <string name="foodjoke">Jokes</string>
+</resources>
