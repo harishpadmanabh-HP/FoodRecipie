@@ -1,4 +1,4 @@
-package com.harish.foodrecipie
+package com.harish.foodrecipie.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

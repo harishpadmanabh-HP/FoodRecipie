@@ -1,6 +1,7 @@
 package com.harish.foodrecipie.ui.recipes
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_food_joke.view.*
 import kotlinx.android.synthetic.main.fragment_recipies.*
 import kotlinx.android.synthetic.main.fragment_recipies.view.*
+import java.util.logging.Logger
 
 @AndroidEntryPoint
 class RecipiesFragment : Fragment() {
@@ -40,9 +42,20 @@ class RecipiesFragment : Fragment() {
         mView = inflater.inflate(R.layout.fragment_recipies, container, false)
 
         setupRecyclerView()
-        requestApiData()
-
+       readDatabase()
         return mView
+    }
+
+    private fun readDatabase() {
+        mainViewModel.readRecipe.observe(viewLifecycleOwner) { db_recipeList->
+            if(db_recipeList .isNotEmpty()){
+                Log.e("recipes_db","reading offline")
+                 mAdapter.setData(db_recipeList[0].foodRecipe)
+                hideShimmerEffect()
+            }else{
+                requestApiData()
+            }
+        }
     }
 
     fun applyQueries(): HashMap<String, String> {
@@ -58,6 +71,8 @@ class RecipiesFragment : Fragment() {
         return queries
     }
     private fun requestApiData() {
+        Log.e("recipes_db","reading api data online")
+
         mainViewModel.getRecipes(applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner, { response ->
             when(response){
