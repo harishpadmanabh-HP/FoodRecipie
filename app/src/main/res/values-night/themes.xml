@@ -13,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">#CAC1C1</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="checkedIconTint">@color/purple_200</item>
+    </style>
 </resources>
