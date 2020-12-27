@@ -23,6 +23,7 @@ class RecipeRowBinding{
             if(vegan){
                 when(view){
                     is TextView -> {
+                        view.text = "Vegan"
                         view.setTextColor(
                             ContextCompat.getColor(
                                 view.context,
@@ -47,6 +48,8 @@ class RecipeRowBinding{
         fun loadImageFromUrl(view:ImageView,url : String){
             view.load(url){
                 crossfade(600)
+                error(R.drawable.ic_baseline_no_food_24)
+                placeholder(R.drawable.ic_baseline_no_food_24)
             }
         }
     }
